@@ -1,0 +1,46 @@
+# Unity generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+Recordings/
+
+# User-specific files
+UserSettings/
+.vscode/
+.idea/
+*.csproj
+*.sln
+*.user
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Unity crash files
+sysinfo.txt
+
+# Asset Store / Packages cache
+[Aa]ssets/AssetStoreTools*
+
+# Addressables generated
+[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+
+# Builds / video exports
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# Large generated screenshots/photos if inside project
+ReefLensPhotos/
