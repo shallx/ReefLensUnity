@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class GameHUDController : MonoBehaviour
 {
 
@@ -33,6 +34,11 @@ public class GameHUDController : MonoBehaviour
     [Header("HUD Values")]
     [SerializeField] private int totalFish = 3;
     [SerializeField] private float oxygen = 100f;
+
+    [Header("Pause Menu")]
+    [SerializeField] private GameObject pausePanel;
+
+    private bool isPaused = false;
 
     private bool shownOpenMissionObjective = false;
     private bool shownDiveObjective = false;
@@ -76,6 +82,11 @@ public class GameHUDController : MonoBehaviour
         if (hintBox != null)
             hintBox.SetActive(false);
 
+        if (pausePanel != null)
+            pausePanel.SetActive(false);
+
+        Time.timeScale = 1f;
+
         Objective_OpenMissionController();
         UpdateFishProgress(0, totalFish);
         currentOxygen = maxOxygen;
@@ -86,9 +97,14 @@ public class GameHUDController : MonoBehaviour
 
     private void Update()
     {
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        // Escape key handling hidden for future use
+        // if (Keyboard.current.escapeKey.wasPressedThisFrame)
+
+        // Press 'Q' to quit the game (calls QuitGame())
+        if (Keyboard.current.qKey.wasPressedThisFrame)
         {
-            SceneManager.LoadScene(mainMenuSceneName);
+            // QuitGame();
+            TogglePause();
         }
 
         UpdateGogglesOverlay();
@@ -273,5 +289,53 @@ public class GameHUDController : MonoBehaviour
 
         shownFindAllFishObjective = true;
         SetObjective("Great match. Keep exploring and complete your marine life collection.");
+    }
+
+
+    // Methods related to Pause Menu
+    public void TogglePause()
+    {
+        if (isPaused)
+            ResumeGame();
+        else
+            PauseGame();
+    }
+
+    public void PauseGame()
+    {
+        isPaused = true;
+
+        if (pausePanel != null)
+            pausePanel.SetActive(true);
+
+        Time.timeScale = 0f;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void ResumeGame()
+    {
+        isPaused = false;
+
+        if (pausePanel != null)
+            pausePanel.SetActive(false);
+
+        Time.timeScale = 1f;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Quit Game");
     }
 }
