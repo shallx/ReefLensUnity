@@ -399,8 +399,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e47ce4f6f8144ed79cbcb8a4506aa2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FishIdentity
-  fishID: AngleFish
-  fishName: Angle Fish
+  fishID: AngelFish
+  fishName: Angel Fish
 --- !u!1 &1686402913110361915
 GameObject:
   m_ObjectHideFlags: 0

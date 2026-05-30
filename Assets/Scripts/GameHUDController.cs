@@ -57,7 +57,7 @@ public class GameHUDController : MonoBehaviour
     [Header("Oxygen System")]
     [SerializeField] private Image oxygenBarFill;
     [SerializeField] private float maxOxygen = 100f;
-    [SerializeField] private float oxygenDrainRate = 5f;
+    [SerializeField] private float oxygenDrainRate = 3f;
     [SerializeField] private float oxygenRecoverRate = 12f;
 
     private float currentOxygen;
